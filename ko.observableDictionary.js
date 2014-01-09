@@ -163,7 +163,12 @@
                             this.push(key, newValue);
                     }
                 }, this);
-                if(typeof(defaultValue)!='undefined') wrapper(defaultValue);
+                if (typeof (defaultValue) != 'undefined') {
+                    var value = getValue(key, this.items());
+                    if (!value) {
+                        wrapper(defaultValue);
+                    }
+                }
             }
 
             return wrapper;
