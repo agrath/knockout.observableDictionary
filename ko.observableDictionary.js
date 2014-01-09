@@ -1,4 +1,4 @@
-﻿// Knockout Observable Dictionary
+// Knockout Observable Dictionary
 // (c) James Foster
 // License: MIT (http://www.opensource.org/licenses/mit-license.php)
 
@@ -141,7 +141,8 @@
             return -1;
         },
 
-        get: function (key, wrap) {
+        get: function (key, wrap, defaultValue) {
+
             if (wrap == false)
                 return getValue(key, this.items());
 
@@ -162,6 +163,7 @@
                             this.push(key, newValue);
                     }
                 }, this);
+                if(typeof(defaultValue)!='undefined') wrapper(defaultValue);
             }
 
             return wrapper;
